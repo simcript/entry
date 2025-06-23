@@ -4,16 +4,72 @@
  * Framework documentation: https://vuetifyjs.com`
  */
 
+import DayJsAdapter from '@date-io/dayjs'
+import JalaliAdapter from '@date-io/jalaali'
+
+import en from 'moment/locale/en-gb'
+import fa from 'moment/locale/fa'
+// Composables
+import { createVuetify } from 'vuetify'
+import { VDateInput } from 'vuetify/labs/VDateInput'
+
+import { VFileUpload } from 'vuetify/labs/VFileUpload'
+import enUS from '@/lang/en-US.js'
+// Translations provided by Vuetify
+import faIR from '@/lang/fa-IR.js'
 // Styles
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 
-// Composables
-import { createVuetify } from 'vuetify'
-
-// https://vuetifyjs.com/en/introduction/why-vuetify/#feature-guides
+const theme = localStorage.getItem('theme')
+let lang = localStorage.getItem('lang')
+lang = lang === 'enUS' ? 'enUS' : 'faIR'
+window.document.querySelectorAll('html')[0].lang = lang[0] + lang[1]
 export default createVuetify({
+  components: {
+    VFileUpload,
+    VDateInput,
+  },
+  date: {
+    adapter: lang === 'faIR' ? JalaliAdapter : DayJsAdapter,
+    locale: { en, enUS: en, faIR: fa, fa },
+  },
+  locale: {
+    locale: lang,
+    fallback: 'enUS',
+    messages: { faIR, enUS },
+    rtl: {
+      faIR: true,
+      enUS: false,
+    },
+  },
   theme: {
-    defaultTheme: 'dark',
+    defaultTheme: theme === 'dark' ? 'dark' : 'light',
+    themes: {
+      dark: {
+        dark: true,
+        colors: {
+          primary: '#2196f3',
+          secondary: '#00bcd4',
+          accent: '#ffc107',
+          error: '#f44336',
+          warning: '#ff9800',
+          info: '#03a9f4',
+          success: '#4caf50',
+        },
+      },
+      light: {
+        dark: false,
+        colors: {
+          primary: '#2196f3',
+          secondary: '#00bcd4',
+          accent: '#ffc107',
+          error: '#f44336',
+          warning: '#ff9800',
+          info: '#03a9f4',
+          success: '#4caf50',
+        },
+      },
+    },
   },
 })

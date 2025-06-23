@@ -13,7 +13,13 @@
     "@fontsource/roboto": "5.2.5",
     "@mdi/font": "7.4.47",
     "vue": "^3.5.13",
-    "vuetify": "^3.8.1"
+    "vuetify": "^3.8.1",
+    "@date-io/date-fns-jalali": "^3.2.0",
+    "@date-io/dayjs": "^3.2.0",
+    "@date-io/jalaali": "^3.2.0",
+    "dayjs": "^1.11.13",
+    "jalali-date": "^1.2.0",
+    "pinia-plugin-persistedstate": "^4.2.0"
   },
   "devDependencies": {
     "@vitejs/plugin-vue": "^5.2.3",
