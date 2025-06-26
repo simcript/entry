@@ -13,26 +13,25 @@ import fa from 'moment/locale/fa'
 import { createVuetify } from 'vuetify'
 import { VDateInput } from 'vuetify/labs/VDateInput'
 
-import { VFileUpload } from 'vuetify/labs/VFileUpload'
-import enUS from '@/lang/en-US.js'
 // Translations provided by Vuetify
+import enUS from '@/lang/en-US.js'
 import faIR from '@/lang/fa-IR.js'
+
 // Styles
 import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 
 const theme = localStorage.getItem('theme')
-let lang = localStorage.getItem('lang')
-lang = lang === 'enUS' ? 'enUS' : 'faIR'
+const lang = localStorage.getItem('lang')
+const dateType = localStorage.getItem('dateType')
 window.document.querySelectorAll('html')[0].lang = lang[0] + lang[1]
 export default createVuetify({
   components: {
-    VFileUpload,
     VDateInput,
   },
   date: {
-    adapter: lang === 'faIR' ? JalaliAdapter : DayJsAdapter,
-    locale: { en, enUS: en, faIR: fa, fa },
+    adapter: dateType === 'jalali' ? JalaliAdapter : DayJsAdapter,
+    locale: { enUS: en, faIR: fa, en, fa },
   },
   locale: {
     locale: lang,
