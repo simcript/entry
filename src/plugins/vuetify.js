@@ -22,7 +22,7 @@ import '@mdi/font/css/materialdesignicons.css'
 import 'vuetify/styles'
 
 const theme = localStorage.getItem('theme')
-const lang = localStorage.getItem('lang')
+const lang = localStorage.getItem('lang') || 'en'
 const dateType = localStorage.getItem('dateType')
 window.document.querySelectorAll('html')[0].lang = lang[0] + lang[1]
 export default createVuetify({

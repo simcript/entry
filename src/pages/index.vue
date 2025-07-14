@@ -1,7 +1,13 @@
 <template>
-  <HelloWorld />
+  <MainCard />
 </template>
 
-<script setup>
+<script>
   //
+  import { defineComponent } from 'vue'
+  import MainCard from '@/components/main/MainCard.vue'
+
+  export default defineComponent({
+    components: { MainCard },
+  })
 </script>

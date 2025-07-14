@@ -5,7 +5,7 @@
 export default {
   path: '/',
   name: 'Main',
-  component: () => import(/* webpackChunkName: 'main' */ '@/pages/main/main.vue'),
+  component: () => import(/* webpackChunkName: 'main' */ '@/pages/main/Main.vue'),
   meta: {
     group: 'main',
     disable: false,
